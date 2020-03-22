@@ -6,16 +6,16 @@
         <img src="../assets/logo.png" alt />
       </div>
       <!--登陆表单区域-->
-      <el-form label-width="0" class="login_form">
+      <el-form label-width="0" :model="loginForm" class="login_form">
         <!--用户名-->
         <el-form-item>
-          <el-input placeholder="请输入用户名">
+          <el-input v-model="loginForm.username" placeholder="请输入用户名">
             <i slot="prefix" class="el-input__icon el-icon-s-custom"></i>
           </el-input>
         </el-form-item>
         <!--密码-->
         <el-form-item>
-          <el-input placeholder="请输入用户名">
+          <el-input v-model="loginForm.password" placeholder="请输入密码" type="password">
             <i slot="prefix" class="el-input__icon el-icon-lock"></i>
           </el-input>
         </el-form-item>
@@ -29,7 +29,16 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      loginForm:{
+         username:'',
+         password:''
+      }
+    };
+  }
+};
 </script>
 <style lang="less" >
 .login_container {
