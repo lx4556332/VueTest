@@ -9,11 +9,15 @@
       <el-form label-width="0" class="login_form">
         <!--用户名-->
         <el-form-item>
-          <el-input></el-input>
+          <el-input placeholder="请输入用户名">
+            <i slot="prefix" class="el-input__icon el-icon-s-custom"></i>
+          </el-input>
         </el-form-item>
         <!--密码-->
         <el-form-item>
-          <el-input></el-input>
+          <el-input placeholder="请输入用户名">
+            <i slot="prefix" class="el-input__icon el-icon-lock"></i>
+          </el-input>
         </el-form-item>
         <!-- 按钮区域 -->
         <el-form-item class="btns">
@@ -64,14 +68,11 @@ export default {};
   display: flex;
   justify-content: flex-end;
 }
-.login_form
-{
-  position:absolute;
+.login_form {
+  position: absolute;
   bottom: 0;
   width: 100%;
   padding: 0 20px;
-  box-sizing:border-box;
-
-
+  box-sizing: border-box;
 }
 </style>
