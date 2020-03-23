@@ -21,8 +21,8 @@
         </el-form-item>
         <!-- 按钮区域 -->
         <el-form-item class="btns">
-          <el-button type="primary">登陆</el-button>
-          <el-button type="info"  @click="resetForm('loginForm')">重置</el-button>
+          <el-button type="primary" @click="login()">登陆</el-button>
+          <el-button type="info" @click="resetForm('loginForm')">重置</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -39,7 +39,12 @@ export default {
       rules: {
         username: [
           { required: true, message: "请输入用户名", trigger: "blur" },
-          { min: 3, max: 5, message: "用户名长度在 3 到 10 个字符", trigger: "blur" }
+          {
+            min: 3,
+            max: 10,
+            message: "用户名长度在 3 到 10 个字符",
+            trigger: "blur"
+          }
         ],
         password: [
           { required: true, message: "请输入密码", trigger: "blur" },
@@ -53,10 +58,14 @@ export default {
       }
     };
   },
-  methods:{
+  methods: {
     resetForm(formName) {
-      console.log(this);
-       this.$refs[formName].resetFields();
+      this.$refs[formName].resetFields();
+    },
+    login() {
+      this.$refs.loginForm.validate(valid => {
+        console.log(valid);
+      });
     }
   }
 };
