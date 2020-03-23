@@ -6,7 +6,7 @@
         <img src="../assets/logo.png" alt />
       </div>
       <!--登陆表单区域-->
-      <el-form label-width="0" :model="loginForm" :rules="rules" class="login_form">
+      <el-form label-width="0" :model="loginForm" :rules="rules" ref="loginForm" class="login_form">
         <!--用户名-->
         <el-form-item prop="username">
           <el-input v-model="loginForm.username" placeholder="请输入用户名">
@@ -22,7 +22,7 @@
         <!-- 按钮区域 -->
         <el-form-item class="btns">
           <el-button type="primary">登陆</el-button>
-          <el-button type="info">重置</el-button>
+          <el-button type="info"  @click="resetForm('loginForm')">重置</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -52,6 +52,12 @@ export default {
         ]
       }
     };
+  },
+  methods:{
+    resetForm(formName) {
+      console.log(this);
+       this.$refs[formName].resetFields();
+    }
   }
 };
 </script>
