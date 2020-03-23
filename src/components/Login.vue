@@ -6,15 +6,15 @@
         <img src="../assets/logo.png" alt />
       </div>
       <!--登陆表单区域-->
-      <el-form label-width="0" :model="loginForm" class="login_form">
+      <el-form label-width="0" :model="loginForm" :rules="rules" class="login_form">
         <!--用户名-->
-        <el-form-item>
+        <el-form-item prop="username">
           <el-input v-model="loginForm.username" placeholder="请输入用户名">
             <i slot="prefix" class="el-input__icon el-icon-s-custom"></i>
           </el-input>
         </el-form-item>
         <!--密码-->
-        <el-form-item>
+        <el-form-item prop="password">
           <el-input v-model="loginForm.password" placeholder="请输入密码" type="password">
             <i slot="prefix" class="el-input__icon el-icon-lock"></i>
           </el-input>
@@ -32,9 +32,24 @@
 export default {
   data() {
     return {
-      loginForm:{
-         username:'',
-         password:''
+      loginForm: {
+        username: "",
+        password: ""
+      },
+      rules: {
+        username: [
+          { required: true, message: "请输入用户名", trigger: "blur" },
+          { min: 3, max: 5, message: "用户名长度在 3 到 10 个字符", trigger: "blur" }
+        ],
+        password: [
+          { required: true, message: "请输入密码", trigger: "blur" },
+          {
+            min: 6,
+            max: 15,
+            message: "密码长度在 6 到 15 个字符",
+            trigger: "blur"
+          }
+        ]
       }
     };
   }
