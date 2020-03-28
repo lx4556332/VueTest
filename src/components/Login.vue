@@ -63,9 +63,11 @@ export default {
       this.$refs[formName].resetFields();
     },
     login() {
-      this.$refs.loginForm.validate(valid => {
+      this.$refs.loginForm.validate(async valid => {
          if(!valid) return;
-         this.$http.post('Login',this.loginForm);
+         const {data:res}=await this.$http.post('login',this.loginForm);
+         if(res.code!==1) return console.log("登陆失败");
+         console.log("登陆成功");
       });
     }
   }
