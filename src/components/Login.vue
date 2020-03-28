@@ -33,47 +33,47 @@ export default {
   data() {
     return {
       loginForm: {
-        username: "",
-        password: ""
+        username: '',
+        password: ''
       },
       rules: {
         username: [
-          { required: true, message: "请输入用户名", trigger: "blur" },
+          { required: true, message: '请输入用户名', trigger: 'blur' },
           {
             min: 3,
             max: 10,
-            message: "用户名长度在 3 到 10 个字符",
-            trigger: "blur"
+            message: '用户名长度在 3 到 10 个字符',
+            trigger: 'blur'
           }
         ],
         password: [
-          { required: true, message: "请输入密码", trigger: "blur" },
+          { required: true, message: '请输入密码', trigger: 'blur' },
           {
             min: 6,
             max: 15,
-            message: "密码长度在 6 到 15 个字符",
-            trigger: "blur"
+            message: '密码长度在 6 到 15 个字符',
+            trigger: 'blur'
           }
         ]
       }
-    };
+    }
   },
   methods: {
     resetForm(formName) {
-      this.$refs[formName].resetFields();
+      this.$refs[formName].resetFields()
     },
     login() {
       this.$refs.loginForm.validate(async valid => {
-         if(!valid) return;
-         const {data:res}=await this.$http.post('login',this.loginForm);
-         if(res.code!==1) return this.$message.error("登陆失败");
-         this.$message.success("登陆成功");
-         window.sessionStorage.setItem("token",res.token);
-         this.$router.push("/home");
-      });
+        if (!valid) return
+        const { data: res } = await this.$http.post('login', this.loginForm)
+        if (res.code !== 1) return this.$message.error('登陆失败')
+        this.$message.success('登陆成功')
+        window.sessionStorage.setItem('token', res.token)
+        this.$router.push('/home')
+      })
     }
   }
-};
+}
 </script>
 <style lang="less" >
 .login_container {
