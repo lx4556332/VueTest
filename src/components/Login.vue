@@ -68,6 +68,8 @@ export default {
          const {data:res}=await this.$http.post('login',this.loginForm);
          if(res.code!==1) return this.$message.error("登陆失败");
          this.$message.success("登陆成功");
+         window.sessionStorage.setItem("token",res.token);
+         this.$router.push("/home");
       });
     }
   }
